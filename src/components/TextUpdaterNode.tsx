@@ -10,10 +10,8 @@ export default function TextUpdaterNode() {
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
       {/* <Handle type="target" position={Position.Top} /> */}
       <div className="flex flex-col">
-        <label htmlFor="text">Words:</label>
+        <label>Words:</label>
         <input
-          id="text"
-          name="text"
           onChange={onChange}
           className="nodrag border shadow-md"
         />

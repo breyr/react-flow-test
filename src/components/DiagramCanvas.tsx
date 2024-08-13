@@ -16,7 +16,6 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/base.css"; // use to make custom node css
 import React, { useCallback, useMemo, useState } from "react";
-import DownloadButton from "./DownloadButton";
 import DragAndDropContainer from "./DragAndDropContainer";
 import TextUpdaterNode from "./TextUpdaterNode";
 
@@ -147,17 +146,20 @@ const DiagramCanvas = () => {
         <Background color="#f0f0f0" variant={BackgroundVariant.Lines} />
         <Controls />
         <MiniMap />
-        <Panel position="top-center">
-          <div
-            className="flex flex-row items-center justify-center bg-blue-500 text-white text-3xl rounded-md p-2 shadow-lg hover:bg-blue-400 hover:cursor-pointer"
+        <Panel position="top-left">
+          <button
+            className={"flex flex-row items-center justify-center bg-blue-500 text-white text-3xl rounded-md p-2 shadow-lg hover:bg-blue-400 hover:cursor-pointer " + (showItems ? 'rounded-b-none' : '')}
             onClick={() => setShowItems(!showItems)}
           >
-            <i className="bi bi-plus"></i>
+            {
+              !showItems
+                ? <i className="bi bi-plus"></i>
+                : <i className="bi bi-dash"></i>
+            }
             <i className="bi bi-diagram-2-fill"></i>
-          </div>
+          </button>
           {showItems && <DragAndDropContainer />}
         </Panel>
-        <DownloadButton />
       </ReactFlow>
     </div>
   );
